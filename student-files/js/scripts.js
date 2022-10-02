@@ -5,11 +5,12 @@
 fetch ('https://randomuser.me/api/?results=12')
     .then(response => response.json())
     .then(data => {
-        console.log(data.results)
-        return data.results})
-    
-    .then(generateCard)
-    //.then(generateModal)
+        console.log(data.results);
+        const dataResultsArray = data.results;
+        generateCard(dataResultsArray);
+        generateModal(dataResultsArray)
+
+})
 
  // returns data of only one employee
 
@@ -29,38 +30,43 @@ function generateCard(data) {
                     <p class="card-text">${employee.email}</p>
                     <p class="card-text cap">${employee.location.city}, ${employee.location.state}</p>
                 </div>
-            </div>`); 
-    })
+            </div>`);
 
+    })
 }
 
-/* function generateModal(data) {
+function generateModal(data) {
+
+
     data.map(employee => {
+        console.log(employee)
         console.log(employee.name.first)
-        
+        console.log(employee.email)
+
+
         const bodyContainer = document.querySelector('body');
-            const modalContainer = document.createElement('div');
-            modalContainer.className = 'modal-container';
-            modalContainer.style.display = 'none';
-            modalContainer.insertAdjacentHTML('beforeend', `
+        const modalContainer = document.querySelector('.modal-container');
+        modalContainer.insertAdjacentHTML('beforeend', `
                 <div class="modal">
                     <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
                     <div class="modal-info-container">
-                        <img class="modal-img" src="https://placehold.it/125x125" alt="profile picture">
-                        <h3 id="name" class="modal-name cap">name</h3>
-                        <p class="modal-text">email</p>
-                        <p class="modal-text cap">city</p>
+                        <img class="modal-img" src="${employee.picture.medium}" alt="profile picture">
+                        <h3 id="name" class="modal-name cap">${employee.name.first} ${employee.name.last}</h3>
+                        <p class="modal-text">${employee.email}</p>
+                        <p class="modal-text cap">${employee.location.city}, ${employee.location.state}</p>
                         <hr>
-                        <p class="modal-text">(555) 555-5555</p>
-                        <p class="modal-text">123 Portland Ave., Portland, OR 97204</p>
-                        <p class="modal-text">Birthday: 10/21/2015</p>
+                        <p class="modal-text">${employee.cell}</p>
+                        <p class="modal-text">${employee.location.street.number} ${employee.location.street.name}, ${employee.location.city}, ${employee.location.state} ${employee.location.postcode}</p>
+                        <p class="modal-text">Birthday: ${employee.dob.date}</p>
                     </div>
             `);
             bodyContainer.appendChild(modalContainer);
+            console.log(modalContainer);
         
+        })
 
-    })
+}
 
-} */
 
+/* EVENT LISTENERS */
 

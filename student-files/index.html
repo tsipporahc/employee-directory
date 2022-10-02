@@ -106,7 +106,7 @@
             </form>`);
             
         
-            const galleryContainer = document.querySelector('#gallery');
+            
 /*             for (let i = 0; i < 12; i++) {
              galleryContainer.insertAdjacentHTML('beforeend', `
             <div class="card">
@@ -123,47 +123,36 @@
 
         //modal container//
 
-            const bodyContainer = document.querySelector('body');
+           const bodyContainer = document.querySelector('body');
             const modalContainer = document.createElement('div');
             modalContainer.className = 'modal-container';
             modalContainer.style.display = 'none';
-            modalContainer.insertAdjacentHTML('beforeend', ``);
-
-            /* modalContainer.insertAdjacentHTML('beforeend', `
-                <div class="modal">
-                    <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
-                    <div class="modal-info-container">
-                        <img class="modal-img" src="https://placehold.it/125x125" alt="profile picture">
-                        <h3 id="name" class="modal-name cap">name</h3>
-                        <p class="modal-text">email</p>
-                        <p class="modal-text cap">city</p>
-                        <hr>
-                        <p class="modal-text">(555) 555-5555</p>
-                        <p class="modal-text">123 Portland Ave., Portland, OR 97204</p>
-                        <p class="modal-text">Birthday: 10/21/2015</p>
-                    </div>
-                </div>
-            `);  */
+            modalContainer.insertAdjacentHTML('beforeend', `
+        
+            `);
             bodyContainer.appendChild(modalContainer);
             
 
 
             /* EVENT LISTENERS */
 
-           
+            const galleryContainer = document.querySelector('#gallery');
+console.log(galleryContainer);
+
+//const modalContainer = document.createElement('div');     
+const cards = document.getElementsByClassName('card');
 
 galleryContainer.addEventListener('click', (e) => {
-    if (e.target) {
+    const clickedCard = e.target.closest('.card');
+    console.log(clickedCard);
+
+    if(e.target) {
     modalContainer.style.display = 'block'; 
-    console.log(e.target.parentNode);
-    const email = document.querySelector('p[class="card-text"]');
-    console.log(email);
-    console.log(email.textContent);
-        }
+    }
     })
 
             
-    
+   
     const closeBtn = document.getElementById('modal-close-btn');
         modalContainer.addEventListener('click', (e) => {
             if (e.target.closest('.modal-close-btn')) {
@@ -181,24 +170,6 @@ galleryContainer.addEventListener('click', (e) => {
             }
         })
 
-
-
-
- /*         bodyContainer.insertAdjacentHTML('beforeend', `
-            <div class="modal-container">
-                <div class="modal">
-                    <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
-                    <div class="modal-info-container">
-                        <img class="modal-img" src="https://placehold.it/125x125" alt="profile picture">
-                        <h3 id="name" class="modal-name cap">name</h3>
-                        <p class="modal-text">email</p>
-                        <p class="modal-text cap">city</p>
-                        <hr>
-                        <p class="modal-text">(555) 555-5555</p>
-                        <p class="modal-text">123 Portland Ave., Portland, OR 97204</p>
-                        <p class="modal-text">Birthday: 10/21/2015</p>
-                    </div>
-                </div>`); */
         </script>
     </body>
 </html>
