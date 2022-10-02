@@ -2,7 +2,7 @@
 
 
 /* FETCH FUNCTIONS */
-fetch ('https://randomuser.me/api/?results=12')
+fetch ('https://randomuser.me/api/?results=12&nat=US')
     .then(response => response.json())
     .then(data => {
         console.log(data.results);
