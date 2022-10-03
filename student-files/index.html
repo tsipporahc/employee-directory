@@ -114,6 +114,22 @@
                 <input type="search" id="search-input" class="search-input" placeholder="Search...">
                 <input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">
             </form>`);
+
+            const searchInput = document.getElementById('search-input');
+
+            searchInput.addEventListener('keyup', (e) => {
+                let searchValue = e.target.value.toLowerCase();
+                console.log(searchValue);
+                let names = document.querySelectorAll('#name');
+                console.log(names);
+                names.forEach(name => {
+                    if (name.textContent.toLowerCase().includes(searchValue)) {
+                        name.parentNode.parentNode.style.display = 'block';
+                    } else {
+                        name.parentNode.parentNode.style.display = 'none';
+                    }
+                })
+            })
             
     
 
