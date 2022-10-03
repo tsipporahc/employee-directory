@@ -1,13 +1,20 @@
+
 /* FETCH FUNCTIONS */
-fetch ('https://randomuser.me/api/?results=12&nat=US')
+async function fetchData (url) {
+fetch (url)
     .then(response => response.json())
     .then(data => {
-        console.log(data.results);
+        //console.log(data.results);
         const dataResultsArray = data.results;
         generateCard(dataResultsArray);
         generateModal(dataResultsArray)
 
 })
+}
+
+Promise.all([
+    fetchData ('https://randomuser.me/api/?results=12&nat=US')
+]) 
 
 
 /* HELPER FUNCTIONS */
@@ -54,7 +61,7 @@ function generateModal(data) {
 
         const bodyContainer = document.querySelector('body');
         const modalContainer = document.querySelector('.modal-container');
-        modalContainer.insertAdjacentHTML('beforeend', `
+        modalContainer.insertAdjacentHTML('afterbegin', `
                 <div class="modal">
                     <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
                     <div class="modal-info-container">
@@ -67,11 +74,18 @@ function generateModal(data) {
                         <p class="modal-text">${employee.location.street.number} ${employee.location.street.name}, ${employee.location.city}, ${employee.location.state} ${employee.location.postcode}</p>
                         <p class="modal-text">Birthday: ${dobMonth}/${dobDate}/${dobYear}</p>
                     </div>
-                </div>    
+                </div> 
+                  
             `);
             bodyContainer.appendChild(modalContainer);            
         
-        })       
+    })
+    
+
+
 }
+
+
+
 
 
