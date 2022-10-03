@@ -1,6 +1,4 @@
 
-
-
 /* FETCH FUNCTIONS */
 fetch ('https://randomuser.me/api/?results=12&nat=US')
     .then(response => response.json())
@@ -12,7 +10,6 @@ fetch ('https://randomuser.me/api/?results=12&nat=US')
 
 })
 
- // returns data of only one employee
 
 /* HELPER FUNCTIONS */
 

@@ -127,17 +127,14 @@
             const modalContainer = document.createElement('div');
             modalContainer.className = 'modal-container';
             modalContainer.style.display = 'none';
-            modalContainer.insertAdjacentHTML('beforeend', `
-        
-            `);
+            modalContainer.insertAdjacentHTML('beforeend', '');
             bodyContainer.appendChild(modalContainer);
             
 
 
             /* EVENT LISTENERS */
 
-            const galleryContainer = document.querySelector('#gallery');
-console.log(galleryContainer);
+const galleryContainer = document.querySelector('#gallery');
 
 //const modalContainer = document.createElement('div');     
 const cards = document.getElementsByClassName('card');
