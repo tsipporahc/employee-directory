@@ -134,22 +134,56 @@
 
             /* EVENT LISTENERS */
 
+// click listener on cards
 const galleryContainer = document.querySelector('#gallery');
-
-//const modalContainer = document.createElement('div');     
+            console.log(galleryContainer);
+    
 const cards = document.getElementsByClassName('card');
+let clickedCardEmail;
 
-galleryContainer.addEventListener('click', (e) => {
-    const clickedCard = e.target.closest('.card');
-    console.log(clickedCard);
+galleryContainer.addEventListener('click',  (e) => {
+    //const clickedCard = e.target.closest('.card');
+    //console.log(clickedCard);
+    console.log(e.target);
+    clickedCardEmail = e.target.querySelector('p[class="card-text"]');
+    console.log(clickedCardEmail);
+    //const clickedCardEmailText = clickedCardEmail.textContent;
+    //console.log(clickedCardEmailText);
 
     if(e.target) {
     modalContainer.style.display = 'block'; 
     }
-    })
+
+})
+
+    /* 
+                const galleryContainer = document.querySelector('#gallery');
+
+//const modalContainer = document.createElement('div');     
+            const cards = document.getElementsByClassName('card');
+
+            galleryContainer.addEventListener('click', (e) => {
+                const clickedCard = e.target.closest('.card');
+                console.log(clickedCard);
+                const clickedCardEmail = e.target.closest('p[class="card-text"]');
+                console.log(clickedCardEmail);
+                const clickedCardEmailText = clickedCardEmail.textContent;
+                console.log(clickedCardEmailText);
+
+                if(e.target) {
+                modalContainer.style.display = 'block'; 
+                    }
+
+                if (clickedCardEmail == cards[i].) {
+
+                }   
+            })
+
+    
+    */
 
             
-   
+// close button   
     const closeBtn = document.getElementById('modal-close-btn');
         modalContainer.addEventListener('click', (e) => {
             if (e.target.closest('.modal-close-btn')) {
@@ -160,7 +194,7 @@ galleryContainer.addEventListener('click', (e) => {
             
 
    
-
+// close modal by clicking out
     window.addEventListener('click', (e) => {
         if (e.target === modalContainer) {
             modalContainer.style.display = 'none'; 
