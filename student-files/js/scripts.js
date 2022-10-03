@@ -4,7 +4,7 @@
 fetch ('https://randomuser.me/api/?results=12&nat=US')
     .then(response => response.json())
     .then(data => {
-        console.log(data.results);
+        //console.log(data.results);
         const dataResultsArray = data.results;
         generateCard(dataResultsArray);
         generateModal(dataResultsArray)
@@ -21,7 +21,7 @@ fetch ('https://randomuser.me/api/?results=12&nat=US')
 
 // display cards with employee info
 function generateCard(data) {
-    console.log(data);
+
     data.map(employee => {
         const galleryContainer = document.querySelector('#gallery');
         galleryContainer.insertAdjacentHTML('beforeend', `
@@ -43,7 +43,6 @@ function generateCard(data) {
 
 // display employee info on modal
 function generateModal(data) {
-    console.log(data);
 
     data.map(employee => {
         let employeeDOB = employee.dob.date;
@@ -62,7 +61,7 @@ function generateModal(data) {
 
         const bodyContainer = document.querySelector('body');
         const modalContainer = document.querySelector('.modal-container');
-        modalContainer.insertAdjacentHTML('afterbegin', `
+        modalContainer.insertAdjacentHTML('beforeend', `
                 <div class="modal">
                     <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
                     <div class="modal-info-container">
@@ -81,8 +80,6 @@ function generateModal(data) {
             bodyContainer.appendChild(modalContainer);            
         
     })
-    
-
 
 }
 

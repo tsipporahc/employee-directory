@@ -47,21 +47,7 @@
         </div>
         `);
 
-                /* Navigation Bars Functionality */
-            const prevBtn = document.getElementById('modal-prev');
-            const nextBtn = document.getElementById('modal-next');
 
-            const modalBtnContainer = document.querySelector('.modal-btn-container');
-            console.log(modalBtnContainer);
-
-            modalBtnContainer.addEventListener('click', (e) => {
-            console.log(e);
-                for (let i=0; i<modal.length; i++) {
-                    if (modal[i].style.display = 'block') {
-                    }
-                }
-
-            })
 
 
         /* EVENT LISTENERS */
@@ -72,15 +58,12 @@
                 const clickedCard = e.target.closest('.card');
                 
                 clickedCard.setAttribute('Selected', '');
-                console.log(clickedCard);
                 modalContainer.style.display = '';
 
                 for (let i =0; i< cards.length; i++) { 
                     if(cards[i].hasAttribute('Selected')) {
                     modal[i].style.display = 'block';
-                    console.log(i);
-                    console.log(cards[i]);
-                    console.log(modal[i]);
+                    modal[i].setAttribute('Selected', '');
                     clickedCard.removeAttribute('Selected');
                     } else {
                     modal[i].style.display = 'none';
@@ -88,10 +71,57 @@
                 }
             }
 
-
-
-
         })
+
+
+
+                /* Navigation Buttons Functionality */
+                const prevBtn = document.getElementById('modal-prev');
+                const nextBtn = document.getElementById('modal-next');
+    
+                const modalBtnContainer = document.querySelector('.modal-btn-container');
+    
+                modalBtnContainer.addEventListener('click', (e) => {
+                console.log(e);
+                    if (e.target == prevBtn) {
+                        for (let i=0; i<modal.length; i++) {
+                            if (modal[i].hasAttribute('Selected')) {
+                                modal[i].style.display = 'none';
+                                modal[i].removeAttribute('Selected','');
+                                console.log(i);
+
+                                i -= 1;
+                                modal[i].style.display = 'block';
+                                modal[i].setAttribute('Selected','');
+                                console.log(modal[i]);
+                                console.log(i);
+                                return i;
+                            }
+
+                                if (i=0) {
+                                    modal[i + 10].style.display = 'block';
+                                    modal[i].setAttribute('Selected','');
+
+                                } 
+                                
+                            
+                        }
+                    }  
+
+
+                    if (e.target == nextBtn) {
+                        for (let i=0; i<modal.length; i++) {
+                            if (modal[i].hasAttribute('Selected')) {
+                                modal[i].style.display = 'none';
+                                modal[i + 1].style.display = 'block';
+                                modal[i + 1].setAttribute('Selected','');
+                            }
+                        }
+                    } 
+    
+                })
+
+        
 
 
             
