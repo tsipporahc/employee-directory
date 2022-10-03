@@ -1,26 +1,27 @@
 
 /* FETCH FUNCTIONS */
-async function fetchData (url) {
-fetch (url)
+//async function fetchData (url) {
+fetch ('https://randomuser.me/api/?results=12&nat=US')
     .then(response => response.json())
     .then(data => {
-        //console.log(data.results);
+        console.log(data.results);
         const dataResultsArray = data.results;
         generateCard(dataResultsArray);
         generateModal(dataResultsArray)
 
 })
-}
+//}
 
-Promise.all([
+/* Promise.all([
     fetchData ('https://randomuser.me/api/?results=12&nat=US')
-]) 
+])  */
 
 
 /* HELPER FUNCTIONS */
 
 // display cards with employee info
 function generateCard(data) {
+    console.log(data);
     data.map(employee => {
         const galleryContainer = document.querySelector('#gallery');
         galleryContainer.insertAdjacentHTML('beforeend', `
@@ -42,7 +43,7 @@ function generateCard(data) {
 
 // display employee info on modal
 function generateModal(data) {
-
+    console.log(data);
 
     data.map(employee => {
         let employeeDOB = employee.dob.date;
