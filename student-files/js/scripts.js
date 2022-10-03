@@ -67,9 +67,12 @@ function generateModal(data) {
                         <p class="modal-text">${employee.location.street.number} ${employee.location.street.name}, ${employee.location.city}, ${employee.location.state} ${employee.location.postcode}</p>
                         <p class="modal-text">Birthday: ${dobMonth}/${dobDate}/${dobYear}</p>
                     </div>
+                </div>    
             `);
             bodyContainer.appendChild(modalContainer);
-            console.log(modalContainer);
+            //document.getElementsByClassName('modal').style.display = 'none';
+            //console.log(modalContainer);
+            
         
         })
         

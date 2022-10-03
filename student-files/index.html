@@ -130,41 +130,50 @@
 
     
 
-
-        let clickedCard;
-        galleryContainer.addEventListener('click',  (e) => {
-
-            
-
-        clickedCard = e.target.parentNode;
-        console.log(clickedCard); // div class card
-
-        
-        //console.log(cards);
-
         const modal = document.getElementsByClassName('modal');
-        //modal.style.display = 'none';
-        //console.log(modal);
-        //console.log(modal[0]);
-        console.log(cards);
+        let clickedCard;
+        let divclasscard;
 
-        for (let i =0; i<cards.length; i++) { 
-        if(clickedCard == cards[i]) {
-        //modalContainer.style.display = 'block';
-        console.log(true);
+
+        galleryContainer.addEventListener('click',  (e) => {
+        
+            clickedCard = e.target.closest('.card');
+            clickedCard.setAttribute('Selected', '');
+            console.log(clickedCard);
+
+            modalContainer.style.display = '';
+
+            for (let i =0; i< cards.length; i++) { 
+            if(cards[i].hasAttribute('Selected')) {
+                console.log(modal[i]);
+                modal[i].style.display = 'block';
+                clickedCard.removeAttribute('Selected');
+                } else {
+                    modal[i].style.display = 'none';
+                }
+
+                    //remove selected attribute
+
+            }
+        })
+            //console.log(cards[0]);
+
+            /* for (let i =0; i< cards.length; i++) { 
+            if(clickedCard === cards[i]) {
+                
+                return cards[i];
         console.log(cards[i]);
         console.log(modal[i]);
-        //modal[i].style.display = 'block';
+        modal[i].style.visibility == true;
         modalContainer.style.display = 'block';
-        // modal set attritube to visible  
+        modal set attritube to visible  
             } /* else if (// modal attribute is false) {
                 modal[i].style.display = 'none';
             } */
 
-        }
+        //} */
 
 
-        })
 
     /* 
                 const galleryContainer = document.querySelector('#gallery');
