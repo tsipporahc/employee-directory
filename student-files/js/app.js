@@ -80,11 +80,13 @@
                 const nextBtn = document.getElementById('modal-next');
     
                 const modalBtnContainer = document.querySelector('.modal-btn-container');
-    
+
+                let i;
                 modalBtnContainer.addEventListener('click', (e) => {
-                console.log(e);
+                    nextBtn.style.visibility = 'visible';
                     if (e.target == prevBtn) {
-                        for (let i=0; i<modal.length; i++) {
+                        for (let i=1; i<modal.length; i++) {
+
                             if (modal[i].hasAttribute('Selected')) {
                                 modal[i].style.display = 'none';
                                 modal[i].removeAttribute('Selected','');
@@ -96,29 +98,43 @@
                                 console.log(modal[i]);
                                 console.log(i);
                                 return i;
-                            }
-
-                                if (i = 0) {
-                                    modal[i + 10].style.display = 'block';
-                                    modal[i].setAttribute('Selected','');
-
-                                } 
                                 
-                            
+                            } /* else {
+                                prevBtn.remove();
+                            }  */ 
+                        }
+                        
+                        if (i = 1) {
+                            prevBtn.style.visibility = 'hidden';
                         }
                     }  
 
-
                     if (e.target == nextBtn) {
-                        for (let i=0; i<modal.length; i++) {
+                        prevBtn.style.visibility = 'visible';
+
+                        for (let i=0; i<modal.length-1; i++) {
+
                             if (modal[i].hasAttribute('Selected')) {
                                 modal[i].style.display = 'none';
-                                modal[i + 1].style.display = 'block';
-                                modal[i + 1].setAttribute('Selected','');
-                            }
+                                modal[i].removeAttribute('Selected','');
+                                console.log(i);
+
+                                i += 1;
+                                modal[i].style.display = 'block';
+                                modal[i].setAttribute('Selected','');
+                                console.log(modal[i]);
+                                console.log(i);
+                                return i;
+                            } /* else {
+                                //prevBtn.remove();
+                            }  */ 
                         }
-                    } 
-    
+                        
+                        if (i = 11) {
+                            nextBtn.style.visibility = 'hidden';
+                        }
+                    }  
+                    
                 })
 
         
