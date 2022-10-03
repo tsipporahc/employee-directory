@@ -98,7 +98,7 @@
                                 return i;
                             }
 
-                                if (i=0) {
+                                if (i = 0) {
                                     modal[i + 10].style.display = 'block';
                                     modal[i].setAttribute('Selected','');
 
