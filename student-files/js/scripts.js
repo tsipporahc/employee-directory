@@ -1,4 +1,3 @@
-
 /* FETCH FUNCTIONS */
 fetch ('https://randomuser.me/api/?results=12&nat=US')
     .then(response => response.json())
@@ -13,6 +12,7 @@ fetch ('https://randomuser.me/api/?results=12&nat=US')
 
 /* HELPER FUNCTIONS */
 
+// display cards with employee info
 function generateCard(data) {
     data.map(employee => {
         const galleryContainer = document.querySelector('#gallery');
@@ -30,8 +30,10 @@ function generateCard(data) {
             </div>`);
 
     })
+
 }
 
+// display employee info on modal
 function generateModal(data) {
 
 
@@ -70,9 +72,7 @@ function generateModal(data) {
             console.log(modalContainer);
         
         })
-
+        
 }
 
-
-/* EVENT LISTENERS */
 
