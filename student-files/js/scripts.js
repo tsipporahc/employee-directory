@@ -39,10 +39,19 @@ function generateModal(data) {
 
 
     data.map(employee => {
-        console.log(employee)
-        console.log(employee.name.first)
-        console.log(employee.email)
+        let employeeDOB = employee.dob.date;
+        let date = new Date(employeeDOB);
+        let dobMonth = date.getMonth() + 1;
+        let dobDate = date.getDate(); // put zero in front
+        let dobYear = date.getFullYear();
 
+        if (dobMonth < 10) {
+            dobMonth = '0' + dobMonth;
+        }
+
+        if (dobDate < 10) {
+            dobDate = '0' + dobDate;
+        }
 
         const bodyContainer = document.querySelector('body');
         const modalContainer = document.querySelector('.modal-container');
@@ -57,7 +66,7 @@ function generateModal(data) {
                         <hr>
                         <p class="modal-text">${employee.cell}</p>
                         <p class="modal-text">${employee.location.street.number} ${employee.location.street.name}, ${employee.location.city}, ${employee.location.state} ${employee.location.postcode}</p>
-                        <p class="modal-text">Birthday: ${employee.dob.date}</p>
+                        <p class="modal-text">Birthday: ${dobMonth}/${dobDate}/${dobYear}</p>
                     </div>
             `);
             bodyContainer.appendChild(modalContainer);
