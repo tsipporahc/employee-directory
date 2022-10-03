@@ -147,22 +147,6 @@
         </div>
         `);
 
-         /* Navigation Buttons Functionality */
-            const prevBtn = document.getElementById('modal-prev');
-            const nextBtn = document.getElementById('modal-next');
-
-            const modalBtnContainer = document.getElementsByClassName('modal-btn-container');
-            console.log(modalBtnContainer);
-
-            modalBtnContainer.addEventListener('click', (e) => {
-            console.log(e);
-                for (let i=0; i<modal.length; i++) {
-                    if (modal[i].style.display = 'block') {
-                    }
-                }
-
-            })
-
 
         /* EVENT LISTENERS */
 
@@ -182,6 +166,23 @@
                     }
                 }
             }
+
+
+            /* Navigation Buttons Functionality */
+            const prevBtn = document.getElementById('modal-prev');
+            const nextBtn = document.getElementById('modal-next');
+
+            const modalBtnContainer = document.getElementsByClassName('modal-btn-container');
+            console.log(modalBtnContainer);
+
+            modalBtnContainer.addEventListener('click', (e) => {
+            console.log(e);
+                for (let i=0; i<modal.length; i++) {
+                    if (modal[i].style.display = 'block') {
+                    }
+                }
+
+            })
 
         })
 
