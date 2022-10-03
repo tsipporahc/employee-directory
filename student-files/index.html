@@ -98,14 +98,17 @@
         <!-- Add your JS here -->
 
         <script>
-            const searchContainer = document.querySelector('.search-container');
-            const bodyContainer = document.querySelector('body');
-            const modalContainer = document.createElement('div');
-            const galleryContainer = document.querySelector('#gallery');
-            const cards = document.getElementsByClassName('card');
+            // variables //
+            const searchContainer = document.querySelector('.search-container'); // search bar
+            const bodyContainer = document.querySelector('body'); //body
+            const modalContainer = document.createElement('div'); // modal div
+            const galleryContainer = document.querySelector('#gallery'); // gallery div
+            const cards = document.getElementsByClassName('card'); // card div
+            const modal = document.getElementsByClassName('modal'); // modal div
+            const closeBtn = document.getElementById('modal-close-btn'); // close btn
 
 
-
+        /* Search Container to hold search bar */
             searchContainer.insertAdjacentHTML('beforeend', `
             <form action="#" method="get">
                 <input type="search" id="search-input" class="search-input" placeholder="Search...">
@@ -114,9 +117,7 @@
             
     
 
-        // creating the modal container//
-
-           
+        /* Setting Modal Container to hold modal popups */
             modalContainer.className = 'modal-container';
             modalContainer.style.display = 'none';
             modalContainer.insertAdjacentHTML('beforeend', '');
@@ -126,21 +127,10 @@
 
             /* EVENT LISTENERS */
 
-        // click listener on cards //
-
-    
-
-        const modal = document.getElementsByClassName('modal');
-        let clickedCard;
-        let divclasscard;
-
-
+        // click listener on gallery that selects a card and shows matching modal //
         galleryContainer.addEventListener('click',  (e) => {
-        
-            clickedCard = e.target.closest('.card');
+            const clickedCard = e.target.closest('.card');
             clickedCard.setAttribute('Selected', '');
-            console.log(clickedCard);
-
             modalContainer.style.display = '';
 
             for (let i =0; i< cards.length; i++) { 
@@ -152,58 +142,12 @@
                     modal[i].style.display = 'none';
                 }
 
-                    //remove selected attribute
-
             }
         })
-            //console.log(cards[0]);
 
-            /* for (let i =0; i< cards.length; i++) { 
-            if(clickedCard === cards[i]) {
-                
-                return cards[i];
-        console.log(cards[i]);
-        console.log(modal[i]);
-        modal[i].style.visibility == true;
-        modalContainer.style.display = 'block';
-        modal set attritube to visible  
-            } /* else if (// modal attribute is false) {
-                modal[i].style.display = 'none';
-            } */
-
-        //} */
-
-
-
-    /* 
-                const galleryContainer = document.querySelector('#gallery');
-
-//const modalContainer = document.createElement('div');     
-            const cards = document.getElementsByClassName('card');
-
-            galleryContainer.addEventListener('click', (e) => {
-                const clickedCard = e.target.closest('.card');
-                console.log(clickedCard);
-                const clickedCardEmail = e.target.closest('p[class="card-text"]');
-                console.log(clickedCardEmail);
-                const clickedCardEmailText = clickedCardEmail.textContent;
-                console.log(clickedCardEmailText);
-
-                if(e.target) {
-                modalContainer.style.display = 'block'; 
-                    }
-
-                if (clickedCardEmail == cards[i].) {
-
-                }   
-            })
-
-    
-    */
 
             
-// close button   
-    const closeBtn = document.getElementById('modal-close-btn');
+        // close button on modal // 
         modalContainer.addEventListener('click', (e) => {
             if (e.target.closest('.modal-close-btn')) {
                 modalContainer.style.display = "none";
@@ -213,8 +157,8 @@
             
 
    
-// close modal by clicking out
-    window.addEventListener('click', (e) => {
+        // close modal by clicking outside of modal //
+        window.addEventListener('click', (e) => {
         if (e.target === modalContainer) {
             modalContainer.style.display = 'none'; 
             }

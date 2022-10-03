@@ -69,13 +69,9 @@ function generateModal(data) {
                     </div>
                 </div>    
             `);
-            bodyContainer.appendChild(modalContainer);
-            //document.getElementsByClassName('modal').style.display = 'none';
-            //console.log(modalContainer);
-            
+            bodyContainer.appendChild(modalContainer);            
         
-        })
-        
+        })       
 }
 
 
