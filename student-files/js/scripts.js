@@ -1,20 +1,30 @@
 
+const bodyContainer = document.querySelector('body');
+const modalContainer = document.createElement('div'); // modal div
+//const modalContainer = document.querySelector('.modal-container');
+modalContainer.className = 'modal-container';
+modalContainer.style.display = 'none';
+modalContainer.insertAdjacentHTML('beforeend', '');
+bodyContainer.appendChild(modalContainer);
+
 /* FETCH FUNCTIONS */
-//async function fetchData (url) {
-fetch ('https://randomuser.me/api/?results=12&nat=US')
+async function fetchData (url) {
+fetch (url)
     .then(response => response.json())
     .then(data => {
         //console.log(data.results);
         const dataResultsArray = data.results;
-        generateCard(dataResultsArray);
+        generateCard(dataResultsArray)
         generateModal(dataResultsArray)
+        generateButtons()
+        
 
 })
-//}
+}
 
-/* Promise.all([
+ Promise.all([
     fetchData ('https://randomuser.me/api/?results=12&nat=US')
-])  */
+])  
 
 
 /* HELPER FUNCTIONS */
@@ -39,6 +49,8 @@ function generateCard(data) {
 
     })
 
+
+
 }
 
 // display employee info on modal
@@ -59,9 +71,18 @@ function generateModal(data) {
             dobDate = '0' + dobDate;
         }
 
-        const bodyContainer = document.querySelector('body');
-        const modalContainer = document.querySelector('.modal-container');
-        modalContainer.insertAdjacentHTML('beforeend', `
+
+               /* Setting Modal Container to hold modal popups */
+
+               //const bodyContainer = document.querySelector('body');
+               //const modalContainer = document.createElement('div'); // modal div
+               const modalContainer = document.querySelector('.modal-container');
+                //modalContainer.className = 'modal-container';
+                //modalContainer.style.display = 'none';
+                //modalContainer.insertAdjacentHTML('beforeend', '');
+                //bodyContainer.appendChild(modalContainer);
+
+                modalContainer.insertAdjacentHTML('beforeend', `
                 <div class="modal">
                     <button type="button" id="modal-close-btn" class="modal-close-btn"><strong>X</strong></button>
                     <div class="modal-info-container">
@@ -74,14 +95,183 @@ function generateModal(data) {
                         <p class="modal-text">${employee.location.street.number} ${employee.location.street.name}, ${employee.location.city}, ${employee.location.state} ${employee.location.postcode}</p>
                         <p class="modal-text">Birthday: ${dobMonth}/${dobDate}/${dobYear}</p>
                     </div>
-                </div> 
+            
                   
             `);
-            bodyContainer.appendChild(modalContainer);            
+            bodyContainer.appendChild(modalContainer); 
+            
+            /* Navigation Button */
+/*             modalContainer.insertAdjacentHTML('beforeend', `
+            <div class="modal-btn-container">
+                <button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
+                <button type="button" id="modal-next" class="modal-next btn">Next</button>
+            </div>
+            `); */
         
     })
 
+
+
+
+
+
+
+
+
+    
+                /* EVENT LISTENERS */
+
+        // click listener on gallery that selects a card and shows matching modal //
+        //const galleryContainer = document.querySelector('#gallery'); // gallery div
+/*         galleryContainer.addEventListener('click',  (e) => {
+            prevBtn.style.visibility = 'visible';
+            prevBtn.style.visibility = 'visible';
+            if (e.target !== galleryContainer) {
+                const clickedCard = e.target.closest('.card');
+                const modalContainer = document.querySelector('.modal-container');
+                clickedCard.setAttribute('Selected', '');
+                modalContainer.style.display = '';
+
+                for (let i =0; i< cards.length; i++) { 
+                    if(cards[i].hasAttribute('Selected')) {
+                    modal[i].style.display = 'block';
+                    modal[i].setAttribute('Selected', '');
+                    clickedCard.removeAttribute('Selected');
+                    } else {
+                    modal[i].style.display = 'none';
+                    }
+                }
+            }
+
+        }) */
+
+
+
+    // close button on modal // 
+    const modalContainer = document.querySelector('.modal-container');
+    modalContainer.addEventListener('click', (e) => {
+        if (e.target.closest('.modal-close-btn')) {
+            modalContainer.style.display = "none";
+        }
+    })
+
+    // close modal by clicking outside of modal //
+    window.addEventListener('click', (e) => {
+        if (e.target === modalContainer) {
+                modalContainer.style.display = 'none'; 
+            }
+        })
+
+
 }
+
+function generateButtons() { 
+modalContainer.insertAdjacentHTML('beforeend', `
+</div>
+            <div class="modal-btn-container">
+            <button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
+            <button type="button" id="modal-next" class="modal-next btn">Next</button>
+        </div> 
+`);
+
+
+                 /* EVENT LISTENERS */
+
+        // click listener on gallery that selects a card and shows matching modal //
+        const galleryContainer = document.querySelector('#gallery'); // gallery div
+        const prevBtn = document.getElementById('modal-prev');
+        const nextBtn = document.getElementById('modal-next');
+        galleryContainer.addEventListener('click',  (e) => {
+            prevBtn.style.visibility = 'visible';
+            nextBtn.style.visibility = 'visible';
+            if (e.target !== galleryContainer) {
+                const clickedCard = e.target.closest('.card');
+                const modalContainer = document.querySelector('.modal-container');
+                clickedCard.setAttribute('Selected', '');
+                modalContainer.style.display = '';
+
+                for (let i =0; i< cards.length; i++) { 
+                    if(cards[i].hasAttribute('Selected')) {
+                    modal[i].style.display = 'block';
+                    modal[i].setAttribute('Selected', '');
+                    clickedCard.removeAttribute('Selected');
+                    } else {
+                    modal[i].style.display = 'none';
+                    }
+                }
+            }
+
+        })
+
+
+
+            /* FUnctionality */
+            /* const prevBtn = document.getElementById('modal-prev');
+            const nextBtn = document.getElementById('modal-next'); */
+        
+            const modalBtnContainer = document.querySelector('.modal-btn-container');
+        
+            let i;
+            modalBtnContainer.addEventListener('click', (e) => {
+            nextBtn.style.visibility = 'visible';
+                if (e.target == prevBtn) {
+                    for (let i=1; i<modal.length; i++) {
+        
+                        if (modal[i].hasAttribute('Selected')) {
+                            modal[i].style.display = 'none';
+                            modal[i].removeAttribute('Selected','');
+                            console.log(i);
+        
+                            i -= 1;
+                            modal[i].style.display = 'block';
+                            modal[i].setAttribute('Selected','');
+                            console.log(modal[i]);
+                            console.log(i);
+                            return i;
+                        
+                        }  
+                    }
+                
+                    if (i = 1) {
+                    prevBtn.style.visibility = 'hidden';
+                    }
+                }  
+        
+            if (e.target == nextBtn) {
+                prevBtn.style.visibility = 'visible';
+        
+                for (let i=0; i<modal.length-1; i++) {
+        
+                    if (modal[i].hasAttribute('Selected')) {
+                        modal[i].style.display = 'none';
+                        modal[i].removeAttribute('Selected','');
+                        console.log(i);
+        
+                        i += 1;
+                        modal[i].style.display = 'block';
+                        modal[i].setAttribute('Selected','');
+                        console.log(modal[i]);
+                        console.log(i);
+                        return i;
+                    } 
+                }
+                
+                if (i = 11) {
+                    nextBtn.style.visibility = 'hidden';
+                }
+            }  
+            
+            }) // end of modal event listener
+
+}
+
+
+
+
+
+
+
+
 
 
 

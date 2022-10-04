@@ -1,8 +1,8 @@
             // variables //
             const searchContainer = document.querySelector('.search-container'); // search bar
-            const bodyContainer = document.querySelector('body'); //body
-            const modalContainer = document.createElement('div'); // modal div
-            const galleryContainer = document.querySelector('#gallery'); // gallery div
+            //const bodyContainer = document.querySelector('body'); //body
+            
+            /* const galleryContainer = document.querySelector('#gallery'); // gallery div */
             const cards = document.getElementsByClassName('card'); // card div
             const modal = document.getElementsByClassName('modal'); // modal div
             const closeBtn = document.getElementById('modal-close-btn'); // close btn
@@ -34,18 +34,18 @@
             
     
        /* Setting Modal Container to hold modal popups */
-       modalContainer.className = 'modal-container';
+/*        modalContainer.className = 'modal-container';
        modalContainer.style.display = 'none';
        modalContainer.insertAdjacentHTML('beforeend', '');
-       bodyContainer.appendChild(modalContainer);
+       bodyContainer.appendChild(modalContainer); */
 
         /* Navigation Button */
-       modalContainer.insertAdjacentHTML('beforeend', `
+/*        modalContainer.insertAdjacentHTML('beforeend', `
         <div class="modal-btn-container">
             <button type="button" id="modal-prev" class="modal-prev btn">Prev</button>
             <button type="button" id="modal-next" class="modal-next btn">Next</button>
         </div>
-        `);
+        `); */
 
 
 
@@ -53,10 +53,11 @@
         /* EVENT LISTENERS */
 
         // click listener on gallery that selects a card and shows matching modal //
+/*         const galleryContainer = document.querySelector('#gallery'); // gallery div
         galleryContainer.addEventListener('click',  (e) => {
             if (e.target !== galleryContainer) {
                 const clickedCard = e.target.closest('.card');
-                
+                const modalContainer = document.querySelector('.modal-container');
                 clickedCard.setAttribute('Selected', '');
                 modalContainer.style.display = '';
 
@@ -71,12 +72,12 @@
                 }
             }
 
-        })
+        }) */
 
 
 
                 /* Navigation Buttons Functionality */
-                const prevBtn = document.getElementById('modal-prev');
+/*                 const prevBtn = document.getElementById('modal-prev');
                 const nextBtn = document.getElementById('modal-next');
     
                 const modalBtnContainer = document.querySelector('.modal-btn-container');
@@ -99,9 +100,7 @@
                                 console.log(i);
                                 return i;
                                 
-                            } /* else {
-                                prevBtn.remove();
-                            }  */ 
+                            }  
                         }
                         
                         if (i = 1) {
@@ -125,9 +124,7 @@
                                 console.log(modal[i]);
                                 console.log(i);
                                 return i;
-                            } /* else {
-                                //prevBtn.remove();
-                            }  */ 
+                            } 
                         }
                         
                         if (i = 11) {
@@ -135,25 +132,14 @@
                         }
                     }  
                     
-                })
+                }) */
 
         
 
 
             
-        // close button on modal // 
-        modalContainer.addEventListener('click', (e) => {
-            if (e.target.closest('.modal-close-btn')) {
-                modalContainer.style.display = "none";
-                }
-            })
+
 
             
 
    
-        // close modal by clicking outside of modal //
-        window.addEventListener('click', (e) => {
-        if (e.target === modalContainer) {
-            modalContainer.style.display = 'none'; 
-            }
-        })
