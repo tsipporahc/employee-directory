@@ -12,7 +12,7 @@ const closeBtn = document.getElementById('modal-close-btn'); // close btn
 /* Search Container to hold search bar */
 searchContainer.insertAdjacentHTML('beforeend', `
     <form action="#" method="get">
-        <input type="search" id="search-input" class="search-input" placeholder="Search...">
+        <input type="search" id="search-input" class="search-input" placeholder="Search Name...">
         <input type="submit" value="&#x1F50D;" id="search-submit" class="search-submit">
     </form>`);
 
