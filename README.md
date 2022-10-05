@@ -14,7 +14,7 @@
 
 -Home Page: increased title font size, changed background color
 
--Card: added hover effect, decreased border radius for cards upon hoover, decreased border radius for letter when wrong, decreased border radius for letter when wrong, changed button color upon selection, added shadowing and hover effects
+-Card: added hover effect, decreased border radius for cards upon hover, decreased border radius for letter when wrong, decreased border radius for letter when wrong, changed button color upon selection, added shadowing and hover effects
 
 -Modal Container: changed background color, changed color of buttons during static and hoover states
 
